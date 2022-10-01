@@ -8,7 +8,7 @@ public class Menu {
                 + "1. Cuadrado\n"
                 + "2. Circulo\n"
                 + "3. Triangulo\n"
-                + "4. Paralelepipedo\n"
+                + "4. Paralelogramo\n"
                 + "0. Salir";
 
         int opcion = Integer.parseInt(JOptionPane.showInputDialog(mensaje));
@@ -23,6 +23,7 @@ public class Menu {
                 menuOpciones();
                 break;
             case 3:
+                menuTriangulo();
                 menuOpciones();
                 break;
             case 4:
@@ -94,14 +95,47 @@ public class Menu {
 
     }
 
-    private void areaCirculo(){
+    private void areaCirculo() {
         JOptionPane.showMessageDialog(null, "El area del circulo es: "
                 + generarCirculo().calcularArea());
     }
 
-    private void perimetroCirculo(){
+    private void perimetroCirculo() {
         JOptionPane.showMessageDialog(null, "El perimetro del circulo es: "
                 + generarCirculo().calcularPerimetro());
+    }
+
+    private void menuTriangulo() {
+        switch (opcionFigura()) {
+            case 1:
+                areaTriangulo();
+                break;
+            case 2:
+                perimetroTriangulo();
+                break;
+            default:
+        }
+        menuOpciones();
+    }
+
+    private Triangulo generarTriangulo() {
+        int base = Integer.parseInt(JOptionPane.showInputDialog("Por favor ingrese la base"));
+        int altura = Integer.parseInt(JOptionPane.showInputDialog("Por favor ingrese la altura"));
+        int lado1 = Integer.parseInt(JOptionPane.showInputDialog("Por favor ingrese el lado 1"));
+        int lado2 = Integer.parseInt(JOptionPane.showInputDialog("Por favor ingrese el lado 2"));
+        Triangulo miTriangulito = new Triangulo(base, altura, lado1, lado2);
+        return miTriangulito;
+
+    }
+
+    private void areaTriangulo() {
+        JOptionPane.showMessageDialog(null, "El area del triangulo es: "
+                + generarTriangulo().calcularArea());
+    }
+
+    private void perimetroTriangulo() {
+        JOptionPane.showMessageDialog(null, "El perimetro del triangulo es: "
+                + generarTriangulo().calcularPerimetro());
     }
 
 }
