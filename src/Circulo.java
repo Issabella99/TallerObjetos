@@ -4,7 +4,8 @@ public class Circulo {
     private double radio;
     private final double PI = 3.1416;
 
-    public Circulo(int radio) {
+    public Circulo(double radio) {
+
         this.radio = radio;
     }
 

@@ -19,6 +19,7 @@ public class Menu {
                 menuOpciones();
                 break;
             case 2:
+                menuCirculo();
                 menuOpciones();
                 break;
             case 3:
@@ -35,21 +36,16 @@ public class Menu {
     }
 
     private void menuCuadrado() {
-        String mensaje = "Por favor escoja lo que desea calcular\n"
-                + "1. Area\n"
-                + "2. Perimetro\n";
-        int opcion = Integer.parseInt(JOptionPane.showInputDialog(mensaje));
-
-        switch (opcion) {
+        switch (opcionFigura()) {
             case 1:
                 calcularAreaCuadrado();
-                menuOpciones();
                 break;
             case 2:
                 calcularperimetroCuadrado();
-                menuOpciones();
                 break;
+            default:
         }
+        menuOpciones();
     }
 
     private void calcularAreaCuadrado() {
@@ -62,11 +58,50 @@ public class Menu {
 
     }
 
-    private Cuadrado generarCuadrado(){
+    private Cuadrado generarCuadrado() {
         int lado = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el lado"));
-        Cuadrado miCuadradito = new Cuadrado (lado);
+        Cuadrado miCuadradito = new Cuadrado(lado);
         return miCuadradito;
 
+    }
+
+    private void menuCirculo() {
+        switch (opcionFigura()) {
+            case 1:
+                areaCirculo();
+                break;
+            case 2:
+               perimetroCirculo();
+                break;
+
+            default:
+        }
+    }
+
+
+    private int opcionFigura() {
+
+        String mensaje = "Por favor escoja lo que desea calcular\n"
+                + "1. Area\n"
+                + "2. Perimetro\n";
+        return Integer.parseInt(JOptionPane.showInputDialog(mensaje));
+    }
+
+    private Circulo generarCirculo() {
+        double radio = Double.parseDouble(JOptionPane.showInputDialog("Por favor ingrese el radio"));
+        Circulo miCirculito = new Circulo(radio);
+        return miCirculito;
+
+    }
+
+    private void areaCirculo(){
+        JOptionPane.showMessageDialog(null, "El area del circulo es: "
+                + generarCirculo().calcularArea());
+    }
+
+    private void perimetroCirculo(){
+        JOptionPane.showMessageDialog(null, "El perimetro del circulo es: "
+                + generarCirculo().calcularPerimetro());
     }
 
 }
