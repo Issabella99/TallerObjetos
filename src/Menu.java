@@ -27,9 +27,11 @@ public class Menu {
                 menuOpciones();
                 break;
             case 4:
+                menuParelolagramo();
                 menuOpciones();
                 break;
             case 0:
+                System.exit(0);
                 break;
             default:
         }
@@ -137,5 +139,38 @@ public class Menu {
         JOptionPane.showMessageDialog(null, "El perimetro del triangulo es: "
                 + generarTriangulo().calcularPerimetro());
     }
+
+    private void menuParelolagramo() {
+        switch (opcionFigura()) {
+            case 1:
+                areaPararelogramo();
+                break;
+            case 2:
+                perimetroParalelogramo();
+                break;
+            default:
+        }
+        menuOpciones();
+    }
+
+    private Paralelogramo generarParalelogramo() {
+        int base = Integer.parseInt(JOptionPane.showInputDialog("Por favor ingrese la base"));
+        int altura = Integer.parseInt(JOptionPane.showInputDialog("Por favor ingrese la altura"));
+        int lado = Integer.parseInt(JOptionPane.showInputDialog("Por favor ingrese el lado "));
+        Paralelogramo miParalelogramito = new Paralelogramo(base, altura, lado);
+        return miParalelogramito;
+
+    }
+
+    private void areaPararelogramo() {
+        JOptionPane.showMessageDialog(null, "El area del Paralelogramo es: "
+                + generarParalelogramo().calcularArea());
+    }
+
+    private void perimetroParalelogramo() {
+        JOptionPane.showMessageDialog(null, "El perimetro del Paralelogramo es: "
+                + generarParalelogramo().calcularPerimetro());
+    }
+
 
 }
